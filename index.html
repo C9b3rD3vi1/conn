@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secret Message</title>
+    <style>
+        body {
+            background-color: black;
+            color: green;
+            font-family: monospace;
+            text-align: center;
+            padding: 20px;
+        }
+        #terminal {
+            border: 2px solid green;
+            padding: 20px;
+            width: 80%;
+            margin: auto;
+            text-align: left;
+            white-space: pre-line;
+            font-size: 18px;
+            min-height: 300px;
+            overflow: hidden;
+        }
+        .hidden {
+            display: none;
+        }
+        @keyframes blink {
+            50% { opacity: 0; }
+        }
+        .cursor {
+            display: inline-block;
+            width: 10px;
+            height: 20px;
+            background-color: green;
+            animation: blink 1s infinite;
+        }
+    </style>
+    
+</head>
+<body>
+    <h1>Accessing Secure Files...</h1>
+    <div id="terminal"></div>
+    <script>
+        const messages = [
+            "Initializing sequence...", 
+            "Bypassing firewall...", 
+            "Decrypting hidden message...", 
+            "Access Granted!", 
+            "Dear [Her Name],", 
+            "I've hacked into my own heart...", 
+            "And the only password is your love.",
+            "I love you. ❤️",
+            "Uploading affection...", 
+            "Connection Established: Heart to Heart ❤️"
+        ];
+
+        let index = 0;
+        function typeMessage() {
+            if (index < messages.length) {
+                document.getElementById("terminal").innerHTML += "\n" + messages[index] + " <span class='cursor'></span>";
+                index++;
+                setTimeout(() => {
+                    document.querySelector('.cursor').remove();
+                    typeMessage();
+                }, 1500);
+            }
+        }
+        
+        setTimeout(typeMessage, 1500);
+    </script>
+</body>
+</html>

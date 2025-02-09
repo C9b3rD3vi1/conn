@@ -7,13 +7,13 @@
     <style>
         body {
             background-color: black;
-            color: green;
+            color: lime;
             font-family: monospace;
             text-align: center;
             padding: 20px;
         }
         #terminal {
-            border: 2px solid green;
+            border: 2px solid lime;
             padding: 20px;
             width: 80%;
             margin: auto;
@@ -22,6 +22,8 @@
             font-size: 18px;
             min-height: 300px;
             overflow: hidden;
+            background-color: rgba(0, 0, 0, 0.9);
+            box-shadow: 0 0 15px lime;
         }
         .hidden {
             display: none;
@@ -33,33 +35,72 @@
             display: inline-block;
             width: 10px;
             height: 20px;
-            background-color: green;
+            background-color: lime;
             animation: blink 1s infinite;
         }
+        @keyframes flicker {
+            0% { opacity: 1; }
+            50% { opacity: 0.7; }
+            100% { opacity: 1; }
+        }
+        h1 {
+            color: lime;
+            text-shadow: 0 0 8px lime;
+            animation: flicker 1.2s infinite alternate;
+        }
+        @keyframes glow {
+            0% { text-shadow: 0 0 10px lime; }
+            50% { text-shadow: 0 0 20px lime; }
+            100% { text-shadow: 0 0 10px lime; }
+        }
+        .glowing-text {
+            animation: glow 1.5s infinite alternate;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .fade-in {
+            animation: fadeIn 2s ease-in-out;
+        }
     </style>
-    
 </head>
 <body>
-    <h1>Accessing Secure Files...</h1>
-    <div id="terminal"></div>
+    <h1 class="glowing-text">Accessing Secure Files...</h1>
+    <div id="terminal" class="fade-in"></div>
+    <audio id="typeSound" src="https://www.soundjay.com/button/beep-07.wav"></audio>
     <script>
         const messages = [
             "Initializing sequence...", 
             "Bypassing firewall...", 
+            " ",
             "Decrypting hidden message...", 
+            " ",
             "Access Granted!", 
-            "Dear [Her Name],", 
+            " ",
+            "Dear [Reina ❤️❤️❤️❤️],", 
+            " ",
             "I've hacked into my own heart...", 
+            " ",
             "And the only password is your love.",
+            " ",
             "I love you. ❤️",
+            " ",
             "Uploading affection...", 
-            "Connection Established: Heart to Heart ❤️"
+            "Connection Established: Heart to Heart ❤️",
+            "Sending virtual hugs...",
+            " ",
+            "I love you more than words can express.",
+            "P.S. You are the most beautiful thing that has ever happened to me. Your smile brightens even my darkest days, and your kindness fills my heart with warmth. I could spend a lifetime just staring into your eyes, getting lost in the love and magic that you bring into my world. You are my forever and always. ❤️", 
+            "",
+            "Mission Complete. Awaiting Response...",
         ];
 
         let index = 0;
         function typeMessage() {
             if (index < messages.length) {
                 document.getElementById("terminal").innerHTML += "\n" + messages[index] + " <span class='cursor'></span>";
+                document.getElementById("typeSound").play();
                 index++;
                 setTimeout(() => {
                     document.querySelector('.cursor').remove();

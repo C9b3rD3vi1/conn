@@ -64,11 +64,14 @@
             animation: fadeIn 2s ease-in-out;
         }
     </style>
+
 </head>
 <body>
     <h1 class="glowing-text">Accessing Secure Files...</h1>
     <div id="terminal" class="fade-in"></div>
     <audio id="typeSound" src="https://www.soundjay.com/button/beep-07.wav"></audio>
+
+
     <script>
         const messages = [
             "Initializing sequence...", 
@@ -96,6 +99,7 @@
             "Mission Complete. Awaiting Response...",
         ];
 
+
         let index = 0;
         function typeMessage() {
             if (index < messages.length) {
@@ -111,5 +115,6 @@
         
         setTimeout(typeMessage, 1500);
     </script>
+    
 </body>
 </html>
